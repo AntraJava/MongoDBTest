@@ -18,7 +18,7 @@ public class Main {
         String[] color = {"RED","GREEN","YELLOW","WHITE","BLACK"};
         Random r = new Random();
         for(int i = 0 ; i < 100 ; i++) {
-            save(new Apple(color[r.nextInt(5)], r.nextDouble()*100) ,mt);
+            save(new Apple(color[r.nextInt(5)], r.nextInt(100)) ,mt);
         }
         search("BLACK", mt);
     }

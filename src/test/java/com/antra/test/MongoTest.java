@@ -3,8 +3,7 @@ package com.antra.test;
 import com.mongodb.DBObject;
 import net.antra.mongo.Apple;
 import net.antra.mongo.Application;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +13,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-import java.util.Random;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MongoTest {
 
@@ -93,7 +89,7 @@ public class MongoTest {
         Query q = new Query();
         Criteria c = new Criteria();
         c.orOperator(Criteria.where("color").is("WHITE"), Criteria.where("color").is("BLACK"));
-        Sort s = new Sort(new Sort.Order(Sort.Direction.ASC,"color"));
+        Sort s = Sort.by(new Sort.Order(Sort.Direction.ASC,"color"));
         q.with(s);
         q.addCriteria(c);
         List<Apple> res = mt.find(q, Apple.class);

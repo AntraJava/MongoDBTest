@@ -11,7 +11,7 @@ public class Apple {
     @Id
     private String id;
     private String color;
-    private Double weight;
+    private Integer weight;
 
     public Apple() {
     }
@@ -20,7 +20,7 @@ public class Apple {
         this.color = color;
     }
 
-    public Apple(String color, Double weight) {
+    public Apple(String color, Integer weight) {
         this.color = color;
         this.weight = weight;
     }
@@ -43,11 +43,11 @@ public class Apple {
         this.color = color;
     }
 
-    public Double getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 

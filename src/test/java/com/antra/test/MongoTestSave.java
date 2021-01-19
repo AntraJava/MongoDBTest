@@ -2,9 +2,8 @@ package com.antra.test;
 
 import net.antra.mongo.Apple;
 import net.antra.mongo.Application;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Random;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MongoTestSave {
 
@@ -24,18 +22,17 @@ public class MongoTestSave {
     Logger log = LoggerFactory.getLogger("Test");
 
     @Test
-    @Ignore
+    @Disabled
     public void setUp() {
         dropAll();
         String[] color = {"RED","GREEN","YELLOW","WHITE","BLACK"};
         Random r = new Random();
         for(int i = 0 ; i < 100 ; i++) {
-            mt.save(new Apple(color[r.nextInt(5)], r.nextDouble()*100));
+            mt.save(new Apple(color[r.nextInt(5)], r.nextInt(100)));
         }
     }
 
     @Test
-//    @Ignore
     public void dropAll() {
         mt.dropCollection("apple");
     }
@@ -44,7 +41,7 @@ public class MongoTestSave {
     public void addOne() {
         Apple apple = new Apple();
         apple.setColor("RED");
-        apple.setWeight(100d);
+        apple.setWeight(10);
         mt.save(apple);
     }
 

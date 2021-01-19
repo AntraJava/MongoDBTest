@@ -29,7 +29,7 @@ public class MongoTest {
     @Test
     public void testSearch() {
         Query q = new Query();
-        q.addCriteria(Criteria.where("color").is("WHITE").and("weight").gt(50));
+        q.addCriteria(Criteria.where("color").is("WHITE"));
         List<Apple> res = mt.find(q, Apple.class);
         res.stream().map(Apple::toString).forEach(log::error);
         log.error(res.size()+"");

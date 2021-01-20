@@ -21,6 +21,7 @@ public class MongoTest {
 
     @Autowired
     MongoTemplate mt;
+
     Logger log = LoggerFactory.getLogger("Test");
 
     /**

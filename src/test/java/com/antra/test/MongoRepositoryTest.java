@@ -28,4 +28,24 @@ public class MongoRepositoryTest {
         long count = repo.count();
         log.error(String.valueOf(count));
     }
+
+    /**
+     * where color = white
+     */
+    @Test
+    public void testSearch() {
+        List<Apple> res = repo.findByColor("WHITE");
+        res.stream().map(Apple::toString).forEach(log::error);
+        log.error(res.size()+"");
+    }
+
+    /**
+     * where color = white
+     */
+    @Test
+    public void testSearchQuery() {
+        List<Apple> res = repo.findUsingQuery();
+        res.stream().map(Apple::toString).forEach(log::error);
+        log.error(res.size()+"");
+    }
 }
